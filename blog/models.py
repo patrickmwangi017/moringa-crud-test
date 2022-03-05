@@ -33,11 +33,11 @@ class Post(TimeStampedModel):
             return super().get_queryset().filter(status='published').select_related('category', 'author')
 
     slug = AutoSlugField(populate_from='slug_name')
-    category = models.ForeignKey(Category, on_delete=models.PROTECT)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     excerpt = models.TextField(null=True)
     content = models.TextField()
-    author = models.ForeignKey(User, on_delete=models.PROTECT, related_name="blog_posts")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="blog_posts")
     status = models.CharField(choices=STATUS.choices, default=STATUS.DRAFT, max_length=20)
     objects = models.Manager()
     published_objects = PublishedObjects()
