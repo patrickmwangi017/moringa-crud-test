@@ -13,6 +13,7 @@ installing dependencies and migrating database
 pip install -r requirements.txt
 python manage.py makemigrations
 python manage.py migrate
+python manage.py createsuperuser
 ```
 
 ## Step 1.3 For running tests
